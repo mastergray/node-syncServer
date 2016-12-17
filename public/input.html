@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="/js/Ajax.js"></script>
+<script type="text/javascript">
+	
+	AjaxHandler = new Ajax('index.html');
+
+		$(document).ready(function() {
+            
+			$("#redButton").click(function () {
+			
+				AjaxHandler.post({
+					'color': '#F00000'
+				});
+				
+			
+			})
+			
+			$("#blueButton").click(function () {
+			
+				AjaxHandler.post({
+					'color': '#0000FF' 
+				});
+
+			
+			})
+			
+			$("#greenButton").click(function () {
+			
+				AjaxHandler.post({
+					'color': '#009900'
+				});
+
+			
+			})
+			
+			$("#blackButton").click(function () {
+			
+				AjaxHandler.post({
+					'color': '#000000'
+				});
+
+			
+			})
+			
+			$("#redButtonVisual").click(function () {
+			
+				AjaxHandler.post({
+					'inputColor': 'red'
+				});
+				
+			
+			})
+			
+			$("#blueButtonVisual").click(function () {
+			
+				AjaxHandler.post({
+					'inputColor': 'blue' 
+				});
+
+			
+			})
+			
+			$("#greenButtonVisual").click(function () {
+			
+				AjaxHandler.post({
+					'inputColor': 'green'
+				});
+
+			
+			})
+			
+			$("#blackButton").click(function () {
+			
+				AjaxHandler.post({
+					'color': '#000000'
+				});
+
+			
+			})
+			
+			$("#blackButtonVisual").click(function () {
+			
+				AjaxHandler.post({
+					'inputColor': 'black'
+				});
+
+			
+			})
+			
+			$("#whiteButton").click(function () {
+			
+				AjaxHandler.post({
+					'color': '#FFFFFF'
+				});
+
+			
+			})
+			
+			$("#whiteButtonVisual").click(function () {
+			
+				AjaxHandler.post({
+					'inputColor': 'white'
+				});
+
+			
+			})
+			
+        });
+		
+		
+
+window.onload = function () {
+	
+	/*setInterval(function () {
+		
+		AjaxHandler.onready(function () {
+		
+			document.getElementById('selectedColor').innerHTML = AjaxHandler.response('text');
+		
+		});
+	
+	}, 100);*/
+	
+}
+
+
+</script>
+<title>Input Page</title>
+</head>
+<body>
+<table style="width:100%;margin:auto;" cellpadding="4">
+	<tr>
+    	<th>Visual</th>
+        <th>Background</th>
+     </tr>
+     <tr>
+        <td><div class="button" id="redButtonVisual">Red</div></td>
+        <td><div class="button" id="redButton">Red</div></td>
+     </tr>
+     <tr>
+     	<td><div class="button" id="blueButtonVisual">Blue</div></td>
+        <td><div class="button" id="blueButton">Blue</div></td>
+     </tr>
+     <tr>
+     	<td><div class="button" id="greenButtonVisual">Green</div></td>
+         <td><div class="button" id="greenButton">Green</div></td>
+     </tr>
+     <tr>
+     	<td><div class="button" id="blackButtonVisual">Black</div></td>
+        <td><div class="button" id="blackButton">Black</div></td>
+     </tr>
+       <tr>
+     	<td><div class="button" id="whiteButtonVisual">White</div></td>
+        <td><div class="button" id="whiteButton">White</div></td>
+     </tr>
+</table>
+</body>
+</html>

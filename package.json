@@ -1,0 +1,9 @@
+{
+	"name"		  :	"syncServer",
+	"version"	  :	"0.0.1",
+	"description" :	"Simple server for relaying HTTP requests to a websocket",
+	"dependencies":	{
+		"mime"	: "~1.2.7",
+		"socket.io":"~1.0.0"
+	}
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+body
+{
+padding:0px;
+margin:0px;
+}
+
+#canvas
+{
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/SimpleCanvas.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+x_counter = 0;
+screenWidth =  $(window).width();
+screenHeight = $(window).height();
+colorSelect = null
+
+
+
+$(document).ready(function () {	
+	
+	$("#canvas").css("background", "#000000");
+	$("#canvas").get(0).width = screenWidth;
+	$("#canvas").get(0).height = screenHeight;
+	
+	var elem = document.getElementById("canvas");
+	var canvas = new SimpleCanvas(elem, screenWidth, screenHeight);
+ 	var socket = io(); 
+
+		socket.on("postEvent", function (postValues) {
+			
+				if (postValues.color) {
+					
+					$("#canvas").css('background', postValues.color);
+					
+				}
+				
+				if (postValues.inputColor) {
+				
+					colorSelect = postValues.inputColor
+				
+				}
+			
+				var note 	  = postValues.inputNote;
+				//var noteAsHex = new Number(postValues.inputNote).toString(16);
+				
+					switch(colorSelect) {
+						case "red":
+						
+							var color = "#FF0000" ; // Red of RGB;
+						
+						break;
+						case "green":
+						
+							var color = "#00FF00" // Green of RGB;
+						
+						break;
+						case "blue":
+						
+							var color = "#0000FF"; // Blue of RGB;
+						
+						break;
+						case "black":
+						
+							var color = "#000000";
+						
+						break;
+						case "white":			
+						default:
+							
+							var color = "#FFFFFF";
+						
+					}
+				
+				var length 	  = screenHeight - ((note / 120) * screenHeight);
+				console.log(screenHeight, length);
+				canvas.drawLine(x_counter, 0, x_counter, length, color);
+	
+			//	Reset counter:
+			if (x_counter > screenWidth) {
+				
+				x_counter = 0;
+				canvas.clear();
+				
+			} 
+			
+			x_counter++;
+			
+			});
+			
+	
+			
+			
+		
+	
+			
+	});
+</script>
+</head>
+
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

@@ -1,0 +1,54 @@
+body
+{
+font-family:helvetica
+}
+
+.page
+{
+margin:auto;
+}
+
+.button
+{
+margin:auto;
+margin-bottom:20px;
+padding:25px;
+border:1px solid #000000;
+border-radius:4px;
+box-shadow:1px 1px 1px #000000;
+text-align:center;
+width:50px;
+font-size:20px;
+text-decoration:none;
+background:#EEEEEE;
+}
+
+.button:active
+{
+background:#ccc;
+}
+
+#redButton, #redButtonVisual
+{
+color:#F00000;
+}
+
+#blueButton, #blueButtonVisual
+{
+color:#0000FF;
+}
+
+#greenButton, #greenButtonVisual
+{
+color:#009900;
+}
+
+#blackButton, #blackButtonVisual
+{
+color:#000000;
+}
+
+#whiteButton, #whiteButtonVisual
+{
+color:#FFFFFF;
+}

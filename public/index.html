@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+body
+{
+padding:0px;
+margin:0px;
+}
+
+#canvas
+{
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/js/SimpleCanvas.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+x_counter = 0;
+screenWidth =  $(window).width();
+screenHeight = $(window).height();
+
+$(document).ready(function () {	
+	
+	$("#canvas").css({
+		"width": '100%',
+		"height":screenHeight
+	});
+	
+	var elem = document.getElementById("canvas");
+	var canvas = new SimpleCanvas(elem, screenWidth, screenHeight);
+ 	var socket = io(); 
+
+	setInterval(function () {
+		
+		//canvas.drawLine(x_counter, 200, x_counter, 200, "#000000");
+
+			socket.on("postEvent", function (postValues) {
+
+			
+				var note 	  = postValues.note;
+				var noteAsHex = new Number(postValues.note).toString(16);
+				var color  	  = "#0000" + noteAsHex;	    // Blue of RBG;
+				var length 	  = 300 * (note / 255);
+				
+				
+				if (noteAsHex.length < 2) {
+				
+					color += "0";
+				
+				}
+
+				canvas.drawLine(x_counter, 0, x_counter, length, color);
+
+			
+			});
+	
+			//	Reset counter:
+			if (x_counter > 300) {
+				
+				x_counter = 0;
+				canvas.clear();
+				
+			} 
+			
+			x_counter++;		
+	
+	}, 100);
+			
+		
+	
+			
+	});
+</script>
+</head>
+
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>
